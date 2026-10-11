@@ -14,11 +14,15 @@ www.fluentcpa.com still shows the Google Sites site.**
 | `assets/site.css` | All styles, shared by both pages |
 | `assets/` | Logo mark, tab icons, the headshot. All taken from the current Google Sites site |
 | `assets/fluent-financials.vcf` | The contact card ("Save to my contacts"): name, firm, phone, email, website, LinkedIn and the logo |
-| `assets/contact-qr.svg` | A QR code holding the same contact. A phone camera offers "Add to contacts" |
-| `tools/contact.js` | Builds both contact files from one set of details. Run `node tools/contact.js` after any change to the phone, email or name. `--test` checks the QR maker against published reference values and decodes the finished code (15/15) |
+| `assets/contact-qr.svg` | The QR code, styled like the firm's original (rounded corner squares, bar-style dots, logo in the middle). It opens `fluentcpa.com/card` |
+| `card/index.html` | The online contact card the QR opens: on a phone it offers "Add to contacts" straight away, with big Call / Email / Book / Website / LinkedIn buttons |
+| `tools/contact.js` | Builds the contact card and the QR from one set of details (`node tools/contact.js`). `--test` (19/19) checks the QR maker against published reference values, decodes the finished code, and proves the logo covers less than level-H error correction can rebuild. `--card-url <address>` points the QR somewhere else, for example a preview address |
 
-**Contact card behaviour.** On a phone, the QR is hidden and a "Save to my contacts" button
-opens the card. On a computer, the QR shows, with a download link for Outlook, Apple
+**Rendering check (done 2026-10-11):** the styled QR was rendered by Edge and every one of its 1,008 modules outside the logo matched the true pattern at its centre.
+
+**The QR only works once the site is live** at the address it encodes. When publishing to a temporary address first, rebuild it with `--card-url` pointing there, then rebuild it again at go-live.
+
+**Contact card behaviour.** On a phone, the QR is hidden. Instead, a big "Save to my contacts" card appears in the contact section, and a bar stays at the bottom of the screen (Call | Save contact | Email). The bar steps aside while the save card is on screen. On a computer, the QR shows, with a download link for Outlook, Apple
 Contacts or Google Contacts. Nothing depends on an outside service.
 
 **Address: deliberately not shown.** Meetings and drop-offs are by appointment ("call or

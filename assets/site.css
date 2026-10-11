@@ -204,3 +204,21 @@ textarea{min-height:110px;resize:vertical;}
 .progress div{height:100%;width:0;background:var(--teal);transition:width .25s;}
 .done{text-align:center;padding:20px 6px;}
 .done .big-tick{width:64px;height:64px;border-radius:50%;background:var(--teal-deep);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;}
+
+/* Phones: a business-card preview and a big, obvious "Save to my contacts" button */
+.mini-card{display:flex;gap:12px;align-items:center;border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:12px 0 14px;background:var(--teal-mist);}
+.mini-card img{width:44px;height:44px;flex-shrink:0;}
+.mini-card b{display:block;font-family:'Space Grotesk',sans-serif;font-size:16px;}
+.mini-card span{display:block;font-size:13px;color:var(--muted);}
+.btn-save{width:100%;padding:18px;font-size:17px;border-radius:14px;}
+.mobile-bar{display:none;}
+@media (hover:none) and (pointer:coarse){
+  .mobile-bar{display:flex;position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:70;gap:8px;padding:8px;
+    background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 30px rgba(15,45,49,.22);}
+  .mobile-bar a{text-decoration:none;border-radius:12px;display:flex;align-items:center;justify-content:center;}
+  .mb-save{flex:1;gap:9px;background:var(--teal-deep);color:#fff;font:700 16.5px/1 'Inter',sans-serif;padding:15px 10px;}
+  .mb-icon{width:62px;flex-direction:column;gap:3px;background:var(--teal-wash);color:var(--teal-deep);font-size:11.5px;font-weight:600;}
+  .mobile-bar{transition:transform .25s,opacity .25s;}
+  .mobile-bar.away{transform:translateY(130%);opacity:0;pointer-events:none;}
+  body{padding-bottom:calc(86px + env(safe-area-inset-bottom));}
+}
