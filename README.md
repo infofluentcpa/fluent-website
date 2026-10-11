@@ -13,6 +13,16 @@ www.fluentcpa.com still shows the Google Sites site.**
 | `start.html` | "Become a client": a 2-minute questionnaire for people who aren't clients yet. **Preview only.** `SUBMIT_URL` is empty, so nothing is sent |
 | `assets/site.css` | All styles, shared by both pages |
 | `assets/` | Logo mark, tab icons, the headshot. All taken from the current Google Sites site |
+| `assets/fluent-financials.vcf` | The contact card ("Save to my contacts"): name, firm, phone, email, website, LinkedIn and the logo |
+| `assets/contact-qr.svg` | A QR code holding the same contact. A phone camera offers "Add to contacts" |
+| `tools/contact.js` | Builds both contact files from one set of details. Run `node tools/contact.js` after any change to the phone, email or name. `--test` checks the QR maker against published reference values and decodes the finished code (15/15) |
+
+**Contact card behaviour.** On a phone, the QR is hidden and a "Save to my contacts" button
+opens the card. On a computer, the QR shows, with a download link for Outlook, Apple
+Contacts or Google Contacts. Nothing depends on an outside service.
+
+**Address: deliberately not shown.** Meetings and drop-offs are by appointment ("call or
+email and we'll set a time").
 
 ## What was kept from the old site
 - Services (all eight)
@@ -21,7 +31,7 @@ www.fluentcpa.com still shows the Google Sites site.**
 - Phone, email and LinkedIn
 - Hours
 - The 30-minute booking link (Google Calendar)
-- The vCard link
+- The vCard link, now rebuilt on our own site with a QR code
 - The logo and the "Maximizing Your Dollar" tagline
 - The headshot
 
