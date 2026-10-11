@@ -1,9 +1,9 @@
 BEGIN:VCARD
 VERSION:3.0
-N:Hendry;Aviva;;;CPA
-FN:Aviva Hendry\, CPA
+N:Fluent Financials;;;;
+FN:Fluent Financials
 ORG:Fluent Financials\, LLC
-TITLE:CPA
+X-ABShowAs:COMPANY
 TEL;TYPE=WORK,VOICE:+1-410-929-4884
 EMAIL;TYPE=INTERNET,WORK:info@fluentcpa.com
 URL;TYPE=WORK:https://www.fluentcpa.com

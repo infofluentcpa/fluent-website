@@ -15,7 +15,7 @@ const path = require('path');
 
 const CONTACT = {
   first: 'Aviva', last: 'Hendry', suffix: 'CPA',
-  org: 'Fluent Financials, LLC', title: 'CPA',
+  org: 'Fluent Financials, LLC', company: 'Fluent Financials',   // a business contact: the firm, not one person
   phone: '+1-410-929-4884', email: 'info@fluentcpa.com',
   url: 'https://www.fluentcpa.com', linkedin: 'https://www.linkedin.com/company/fluent-financials-llc',
   // What the QR code opens: the online contact card page (card/index.html). Kept short so the
@@ -30,10 +30,10 @@ const vesc = (s) => String(s).replace(/\\/g, '\\\\').replace(/,/g, '\\,').replac
 function vcard(c, photoBase64) {
   const lines = [
     'BEGIN:VCARD', 'VERSION:3.0',
-    'N:' + [vesc(c.last), vesc(c.first), '', '', vesc(c.suffix)].join(';'),
-    'FN:' + vesc(c.first + ' ' + c.last + ', ' + c.suffix),
+    'N:' + vesc(c.company) + ';;;;',
+    'FN:' + vesc(c.company),
     'ORG:' + vesc(c.org),
-    'TITLE:' + vesc(c.title),
+    'X-ABShowAs:COMPANY',   // Apple Contacts: show and sort it as a business
     'TEL;TYPE=WORK,VOICE:' + c.phone,
     'EMAIL;TYPE=INTERNET,WORK:' + c.email,
     'URL;TYPE=WORK:' + c.url
@@ -53,8 +53,8 @@ function vcard(c, photoBase64) {
 /** The card inside the QR code: essentials only, so the code stays small and easy to scan from a screen. */
 function vcardCompact(c) {
   return ['BEGIN:VCARD', 'VERSION:3.0',
-    'N:' + [vesc(c.last), vesc(c.first), '', '', vesc(c.suffix)].join(';'),
-    'FN:' + vesc(c.first + ' ' + c.last + ', ' + c.suffix),
+    'N:' + vesc(c.company) + ';;;;',
+    'FN:' + vesc(c.company),
     'ORG:' + vesc(c.org),
     'TEL:' + c.phone.replace(/[^+0-9]/g, ''),
     'EMAIL:' + c.email,
@@ -427,7 +427,7 @@ function tests() {
   const len = take(4, q.version < 10 ? 8 : 16), start = 4 + (q.version < 10 ? 8 : 16);
   const text = Buffer.from(Array.from({ length: len }, (_, i) => take(start + i * 8, 8))).toString('utf8');
   check('the code decodes to exactly the contact card (byte mode)', take(0, 4) === 4 && text === vcardCompact(CONTACT), JSON.stringify(text.slice(0, 40)));
-  check('…and the card has the name, phone and email', /FN:Aviva Hendry\\, CPA/.test(text) && /TEL:\+14109294884/.test(text) && /EMAIL:info@fluentcpa\.com/.test(text));
+  check('…and the card is the firm (no personal name), with phone and email', /FN:Fluent Financials\n/.test(text) && !/Aviva/.test(text) && /TEL:\+14109294884/.test(text) && /EMAIL:info@fluentcpa\.com/.test(text));
   check('finder patterns in three corners, dark module present', q.modules[0][0] && q.modules[6][6] && !q.modules[7][7] && q.modules[n - 1][0] && q.modules[0][n - 1] && q.modules[n - 8][8]);
   check('timing pattern alternates', [8, 9, 10, 11].every((i) => q.modules[6][i] === (i % 2 === 0) && q.modules[i][6] === (i % 2 === 0)));
   // Both copies of the format information agree.
