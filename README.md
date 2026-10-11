@@ -33,7 +33,7 @@ email and we'll set a time").
 - All five testimonials (spelling fix: "bookkeeping")
 - Phone, email and LinkedIn
 - Hours
-- The 30-minute booking link (Google Calendar)
+- The booking link (Google Calendar, 15-minute fit check)
 - The vCard link, now rebuilt on our own site with a QR code
 - The logo and the "Maximizing Your Dollar" tagline
 - The headshot
