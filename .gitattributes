@@ -1,0 +1,2 @@
+# The contact card keeps its exact CRLF line endings (vCard standard).
+*.vcf -text
