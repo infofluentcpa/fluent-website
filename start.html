@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Become a client — Fluent Financials</title>
+<meta name="description" content="Tell Fluent Financials a little about you or your business — about two minutes — and we'll be in touch about how we can help.">
+<link rel="canonical" href="https://www.fluentcpa.com/start.html">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to the form</a>
+
+<header class="site-head scrolled">
+  <div class="wrap head-row">
+    <a class="brand" href="index.html" aria-label="Fluent Financials — home">
+      <img src="assets/mark-512.png" alt="" width="38" height="38">
+      <span class="brand-word">FLUENT<span> FINANCIALS</span><small>Maximizing Your Dollar</small></span>
+    </a>
+    <nav class="nav" style="display:flex;position:static;box-shadow:none;border:0;padding:0;background:none;flex-direction:row;" aria-label="Main">
+      <a href="index.html">← Back to site</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section style="padding:56px 0 88px;" class="alt">
+    <div class="wrap form-shell">
+      <span class="eyebrow">Become a client</span>
+      <h1 style="font-size:clamp(30px,4.4vw,44px);">Tell us a little about you</h1>
+      <p class="lead">About two minutes. Your answers help us understand what you need before we talk, so the first conversation is about you — not paperwork.</p>
+
+      <div class="notice warn" id="preview-note" style="margin:18px 0 0;"><b>Preview.</b> This form is not connected yet — nothing you enter here is sent anywhere.</div>
+
+      <div class="form-card" style="margin-top:26px;" id="form-card">
+        <div class="progress" aria-hidden="true"><div id="bar"></div></div>
+        <form id="start-form" novalidate>
+
+          <fieldset>
+            <legend>1. How can we reach you?</legend>
+            <div class="two">
+              <div class="field" data-req="name"><label for="f-name">Your name <span class="req">*</span></label><input id="f-name" name="name" type="text" autocomplete="name" maxlength="120"><div class="err-msg">Please add your name.</div></div>
+              <div class="field" data-req="email"><label for="f-email">Email <span class="req">*</span></label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="160"><div class="err-msg">Please add an email address we can reply to.</div></div>
+            </div>
+            <div class="two">
+              <div class="field"><label for="f-phone">Phone <span class="muted" style="font-weight:400;">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+              <div class="field"><label for="f-contact">Best way to reach you</label>
+                <select id="f-contact" name="contactBy"><option>Email</option><option>Phone call</option><option>Text message</option></select></div>
+            </div>
+          </fieldset>
+
+          <fieldset data-req="who">
+            <legend>2. Who is this for? <span class="req">*</span></legend>
+            <div class="options">
+              <label class="opt"><input type="radio" name="who" value="Me or my family"> <span>Me or my family</span></label>
+              <label class="opt"><input type="radio" name="who" value="My business"> <span>My business</span></label>
+              <label class="opt"><input type="radio" name="who" value="Both"> <span>Both — personal and business</span></label>
+              <label class="opt"><input type="radio" name="who" value="A trust, estate or nonprofit"> <span>A trust, estate or nonprofit</span></label>
+            </div>
+            <div class="err-msg">Please choose one.</div>
+          </fieldset>
+
+          <fieldset id="biz-block" hidden>
+            <legend>What kind of business?</legend>
+            <p class="hint">Pick any that apply.</p>
+            <div class="options">
+              <label class="opt"><input type="checkbox" name="business" value="Sole proprietor or single-member LLC"> <span>Sole proprietor or single-member LLC</span></label>
+              <label class="opt"><input type="checkbox" name="business" value="Partnership or multi-member LLC"> <span>Partnership or multi-member LLC</span></label>
+              <label class="opt"><input type="checkbox" name="business" value="S corporation"> <span>S corporation</span></label>
+              <label class="opt"><input type="checkbox" name="business" value="C corporation"> <span>C corporation</span></label>
+              <label class="opt"><input type="checkbox" name="business" value="Not formed yet"> <span>Not formed yet <small>Thinking about starting one</small></span></label>
+              <label class="opt"><input type="checkbox" name="business" value="Not sure"> <span>Not sure</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset data-req="help">
+            <legend>3. What can we help with? <span class="req">*</span></legend>
+            <p class="hint">Pick any that apply.</p>
+            <div class="options">
+              <label class="opt"><input type="checkbox" name="help" value="Tax preparation"> <span>Tax preparation</span></label>
+              <label class="opt"><input type="checkbox" name="help" value="Tax planning"> <span>Tax planning <small>Lowering next year's bill</small></span></label>
+              <label class="opt"><input type="checkbox" name="help" value="Monthly accounting or bookkeeping"> <span>Monthly accounting or bookkeeping</span></label>
+              <label class="opt"><input type="checkbox" name="help" value="QuickBooks set-up or clean-up"> <span>QuickBooks set-up or clean-up</span></label>
+              <label class="opt"><input type="checkbox" name="help" value="Budgeting, forecasting or CFO services"> <span>Budgeting, forecasting or CFO services</span></label>
+              <label class="opt"><input type="checkbox" name="help" value="Forming a business"> <span>Forming a business</span></label>
+              <label class="opt"><input type="checkbox" name="help" value="Business consulting"> <span>Business consulting</span></label>
+              <label class="opt"><input type="checkbox" name="help" value="Not sure yet"> <span>Not sure yet</span></label>
+            </div>
+            <div class="err-msg">Please pick at least one — "Not sure yet" is fine.</div>
+          </fieldset>
+
+          <fieldset>
+            <legend>4. What applies to you this year?</legend>
+            <p class="hint">Pick any that apply. No amounts needed.</p>
+            <div class="options">
+              <label class="opt"><input type="checkbox" name="situation" value="A W-2 job"> <span>A W-2 job</span></label>
+              <label class="opt"><input type="checkbox" name="situation" value="Self-employed or freelance income"> <span>Self-employed or freelance income</span></label>
+              <label class="opt"><input type="checkbox" name="situation" value="Rental property"> <span>Rental property</span></label>
+              <label class="opt"><input type="checkbox" name="situation" value="Investments, stock sales or crypto"> <span>Investments, stock sales or crypto</span></label>
+              <label class="opt"><input type="checkbox" name="situation" value="Retirement income or Social Security"> <span>Retirement income or Social Security</span></label>
+              <label class="opt"><input type="checkbox" name="situation" value="Income in more than one state"> <span>Income in more than one state <small>Or moved this year</small></span></label>
+              <label class="opt"><input type="checkbox" name="situation" value="A big life change"> <span>A big life change <small>Marriage, baby, new home, divorce, a death in the family</small></span></label>
+              <label class="opt"><input type="checkbox" name="situation" value="None of these"> <span>None of these</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>5. Anything time-sensitive?</legend>
+            <div class="options">
+              <label class="opt"><input type="radio" name="urgent" value="No"> <span>No</span></label>
+              <label class="opt"><input type="radio" name="urgent" value="Behind on filing"> <span>Behind on filing <small>One or more years not filed</small></span></label>
+              <label class="opt"><input type="radio" name="urgent" value="IRS or state letter"> <span>I received an IRS or state letter</span></label>
+              <label class="opt"><input type="radio" name="urgent" value="Deadline coming up"> <span>A deadline is coming up soon</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>6. Who prepared your last return?</legend>
+            <div class="options">
+              <label class="opt"><input type="radio" name="lastPrep" value="Another CPA or tax firm"> <span>Another CPA or tax firm</span></label>
+              <label class="opt"><input type="radio" name="lastPrep" value="Tax software"> <span>Tax software <small>TurboTax, H&amp;R Block online, etc.</small></span></label>
+              <label class="opt"><input type="radio" name="lastPrep" value="I did it myself by hand"> <span>I did it myself by hand</span></label>
+              <label class="opt"><input type="radio" name="lastPrep" value="This will be my first return"> <span>This will be my first return</span></label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>7. How did you hear about us?</legend>
+            <div class="two">
+              <div class="field"><select id="f-heard" name="heard" aria-label="How did you hear about us?"><option value="">Choose one</option><option>A client or friend referred me</option><option>Google search</option><option>LinkedIn</option><option>Other</option></select></div>
+              <div class="field"><input id="f-referrer" name="referrer" type="text" maxlength="120" placeholder="Who referred you? (optional)" aria-label="Who referred you"></div>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend>8. Anything else we should know?</legend>
+            <div class="field"><textarea id="f-notes" name="notes" maxlength="1500" placeholder="Optional — in your own words."></textarea>
+              <p class="hint" style="margin-top:6px;">Please don't include Social Security numbers, account numbers or tax documents here. We'll set up a secure way to share those once we've talked.</p></div>
+          </fieldset>
+
+          <!-- Spam trap: people never see or fill this. -->
+          <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+
+          <div class="notice" style="margin-bottom:20px;">Sending this does not make you a client or start any work yet — it simply lets us get back to you. We use your answers only to contact you about working together, and we never sell or share them.</div>
+          <button class="btn btn-primary" type="submit" style="width:100%;padding:17px;">Send to Fluent Financials</button>
+          <p class="muted center" style="font-size:14px;margin-top:14px;">Prefer to talk first? <a href="https://calendar.app.google/PBTFqVSSj32QQpCy7" target="_blank" rel="noopener">Book a 30-minute call</a> or call <a href="tel:+14109294884">410-929-4884</a>.</p>
+        </form>
+      </div>
+
+      <div class="form-card done" id="done" hidden tabindex="-1">
+        <div class="big-tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h2 style="font-size:28px;">Thank you — we've got it</h2>
+        <p class="lead" style="margin:0 auto 18px;">We'll review your answers and reach out to you. If you'd like to pick a time now, you can book a 30-minute call.</p>
+        <a class="btn btn-primary" href="https://calendar.app.google/PBTFqVSSj32QQpCy7" target="_blank" rel="noopener">Book a 30-minute call</a>
+        <p class="muted" id="done-preview" style="font-size:14px;margin-top:18px;"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-row">
+      <a class="brand" href="index.html" aria-label="Fluent Financials — home">
+        <img src="assets/mark-512.png" alt="" width="34" height="34">
+        <span class="brand-word">FLUENT<span> FINANCIALS</span><small>Maximizing Your Dollar</small></span>
+      </a>
+      <div><a href="tel:+14109294884">410-929-4884</a><br><a href="mailto:info@fluentcpa.com">info@fluentcpa.com</a></div>
+    </div>
+    <div class="foot-legal">© <span id="yr">2026</span> Fluent Financials, LLC · Aviva Hendry, CPA (Maryland license).</div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Where answers go once the firm's intake endpoint exists. Empty = preview: nothing is sent.
+  var SUBMIT_URL = '';
+  var form = document.getElementById('start-form');
+  var started = Date.now();
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  if (SUBMIT_URL) document.getElementById('preview-note').hidden = true;
+
+  function values(name) { return Array.prototype.map.call(form.querySelectorAll('[name="' + name + '"]:checked'), function (i) { return i.value; }); }
+  function val(id) { return document.getElementById(id).value.trim(); }
+
+  // Business types only when the answer involves a business.
+  function syncBusiness() {
+    var who = values('who')[0] || '';
+    document.getElementById('biz-block').hidden = !(who === 'My business' || who === 'Both');
+  }
+  // "None of these" can't sit alongside other choices.
+  form.addEventListener('change', function (e) {
+    if (e.target.name === 'situation') {
+      var boxes = form.querySelectorAll('[name="situation"]');
+      if (e.target.value === 'None of these' && e.target.checked) boxes.forEach(function (b) { if (b !== e.target) b.checked = false; });
+      else if (e.target.checked) boxes.forEach(function (b) { if (b.value === 'None of these') b.checked = false; });
+    }
+    if (e.target.name === 'who') syncBusiness();
+    clearInvalid(e.target);
+    progress();
+  });
+  form.addEventListener('input', function (e) { clearInvalid(e.target); progress(); });
+
+  function clearInvalid(el) { var f = el.closest('[data-req]'); if (f) f.classList.remove('invalid'); }
+  function progress() {
+    var parts = [val('f-name') && val('f-email'), values('who').length, values('help').length, values('situation').length,
+                 values('urgent').length, values('lastPrep').length, val('f-heard')];
+    var done = parts.filter(Boolean).length;
+    document.getElementById('bar').style.width = Math.round(done / parts.length * 100) + '%';
+  }
+
+  function check() {
+    var bad = [];
+    var email = val('f-email');
+    if (!val('f-name')) bad.push('name');
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) bad.push('email');
+    if (!values('who').length) bad.push('who');
+    if (!values('help').length) bad.push('help');
+    form.querySelectorAll('[data-req]').forEach(function (f) { f.classList.toggle('invalid', bad.indexOf(f.getAttribute('data-req')) > -1); });
+    if (bad.length) {
+      var first = form.querySelector('[data-req="' + bad[0] + '"]');
+      first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      var input = first.querySelector('input'); if (input) input.focus({ preventScroll: true });
+    }
+    return !bad.length;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!check()) return;
+    var payload = {
+      name: val('f-name'), email: val('f-email'), phone: val('f-phone'), contactBy: val('f-contact'),
+      who: values('who')[0] || '', business: values('business'), help: values('help'), situation: values('situation'),
+      urgent: values('urgent')[0] || '', lastPrep: values('lastPrep')[0] || '', heard: val('f-heard'), referrer: val('f-referrer'),
+      notes: val('f-notes'), website: val('f-website'), secondsToFill: Math.round((Date.now() - started) / 1000)
+    };
+    var finish = function (previewNote) {
+      document.getElementById('form-card').hidden = true;
+      document.getElementById('preview-note').hidden = true;
+      var done = document.getElementById('done');
+      done.hidden = false;
+      document.getElementById('done-preview').textContent = previewNote || '';
+      done.focus(); window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+    // Bots fill the hidden field or submit instantly: show the thank-you and send nothing.
+    if (payload.website || payload.secondsToFill < 3) { finish(''); return; }
+    if (!SUBMIT_URL) { finish('Preview only — nothing was sent. Once connected, these answers go to the firm\'s Sheet and inbox.'); console.log('Would send:', payload); return; }
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Sending…';
+    // text/plain avoids a CORS preflight, which Apps Script web apps don't answer.
+    fetch(SUBMIT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action: 'prospect', data: payload }) })
+      .then(function (r) { return r.json(); })
+      .then(function (r) { if (!r || !r.ok) throw new Error((r && r.error) || 'Not saved'); finish(''); })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = 'Send to Fluent Financials';
+        alert('Sorry — that didn\'t go through. Please try again, or email info@fluentcpa.com.');
+      });
+  });
+  progress();
+})();
+</script>
+</body>
+</html>
