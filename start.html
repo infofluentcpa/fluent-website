@@ -36,7 +36,6 @@
       <h1 style="font-size:clamp(30px,4.4vw,44px);">Tell us a little about you</h1>
       <p class="lead">About two minutes. Your answers help us understand what you need before we talk, so the first conversation is about you — not paperwork.</p>
 
-      <div class="notice warn" id="preview-note" style="margin:18px 0 0;"><b>Preview.</b> This form is not connected yet — nothing you enter here is sent anywhere.</div>
 
       <div class="form-card" style="margin-top:26px;" id="form-card">
         <div class="progress" aria-hidden="true"><div id="bar"></div></div>
@@ -149,17 +148,21 @@
           <div class="hp" aria-hidden="true"><label for="f-website">Website</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
 
           <div class="notice" style="margin-bottom:20px;">Sending this does not make you a client or start any work yet — it simply lets us get back to you. We use your answers only to contact you about working together, and we never sell or share them.</div>
-          <button class="btn btn-primary" type="submit" style="width:100%;padding:17px;">Send to Fluent Financials</button>
+          <button class="btn btn-primary" type="submit" id="send-btn" style="width:100%;padding:17px;">Email my answers to Fluent Financials</button>
+          <p class="muted center" id="send-hint" style="font-size:14px;margin-top:10px;">Your email app opens with everything filled in — press Send there to finish.</p>
           <p class="muted center" style="font-size:14px;margin-top:14px;">Prefer to talk first? <a href="https://calendar.app.google/PBTFqVSSj32QQpCy7" target="_blank" rel="noopener">Book a 30-minute call</a> or call <a href="tel:+14109294884">410-929-4884</a>.</p>
         </form>
       </div>
 
       <div class="form-card done" id="done" hidden tabindex="-1">
         <div class="big-tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h2 style="font-size:28px;">Thank you — we've got it</h2>
-        <p class="lead" style="margin:0 auto 18px;">We'll review your answers and reach out to you. If you'd like to pick a time now, you can book a 30-minute call.</p>
+        <h2 style="font-size:28px;" id="done-title">Thank you — we've got it</h2>
+        <p class="lead" style="margin:0 auto 18px;" id="done-text">We'll review your answers and reach out to you. If you'd like to pick a time now, you can book a 30-minute call.</p>
+        <div id="done-email" hidden style="margin:0 0 16px;">
+          <a class="btn btn-ghost" id="reopen-email" href="#">Open the email again</a>
+          <p class="muted" style="font-size:14px;margin-top:12px;">Didn't open? Email <a href="mailto:info@fluentcpa.com">info@fluentcpa.com</a> or call <a href="tel:+14109294884">410-929-4884</a>.</p>
+        </div>
         <a class="btn btn-primary" href="https://calendar.app.google/PBTFqVSSj32QQpCy7" target="_blank" rel="noopener">Book a 30-minute call</a>
-        <p class="muted" id="done-preview" style="font-size:14px;margin-top:18px;"></p>
       </div>
     </div>
   </section>
@@ -180,12 +183,32 @@
 
 <script>
 (function () {
-  // Where answers go once the firm's intake endpoint exists. Empty = preview: nothing is sent.
+  // Where answers go once the firm's intake endpoint exists (Prospects tab + email alert).
+  // Until then (empty), the answers go by email: the visitor's email app opens with a
+  // pre-filled message to info@ and they press Send.
   var SUBMIT_URL = '';
+  var TO = 'info@fluentcpa.com';
   var form = document.getElementById('start-form');
   var started = Date.now();
   document.getElementById('yr').textContent = new Date().getFullYear();
-  if (SUBMIT_URL) document.getElementById('preview-note').hidden = true;
+  if (SUBMIT_URL) {
+    document.getElementById('send-btn').textContent = 'Send to Fluent Financials';
+    document.getElementById('send-hint').hidden = true;
+  }
+
+  /** The email a prospect sends: every answer, plainly laid out. */
+  function mailtoFor(p) {
+    var line = function (label, v) { v = Array.isArray(v) ? v.join(', ') : v; return v ? label + ': ' + v + '\n' : ''; };
+    var notes = p.notes.length > 1200 ? p.notes.slice(0, 1200) + '…' : p.notes;
+    var body = 'New client inquiry from fluentcpa.com\n\n' +
+      line('Name', p.name) + line('Email', p.email) + line('Phone', p.phone) + line('Best way to reach me', p.contactBy) + '\n' +
+      line('Who this is for', p.who) + line('Kind of business', p.business) + line('Help with', p.help) +
+      line('This year', p.situation) + line('Time-sensitive', p.urgent) + line('Last return prepared by', p.lastPrep) +
+      line('Heard about you', p.heard) + line('Referred by', p.referrer) +
+      (notes ? '\nAnything else:\n' + notes + '\n' : '');
+    return 'mailto:' + TO + '?subject=' + encodeURIComponent('New client inquiry — ' + p.name) + '&body=' + encodeURIComponent(body);
+  }
+  function openMail(url) { (window.__fpOpenMail || function (u) { window.location.href = u; })(url); }
 
   function values(name) { return Array.prototype.map.call(form.querySelectorAll('[name="' + name + '"]:checked'), function (i) { return i.value; }); }
   function val(id) { return document.getElementById(id).value.trim(); }
@@ -241,23 +264,32 @@
       urgent: values('urgent')[0] || '', lastPrep: values('lastPrep')[0] || '', heard: val('f-heard'), referrer: val('f-referrer'),
       notes: val('f-notes'), website: val('f-website'), secondsToFill: Math.round((Date.now() - started) / 1000)
     };
-    var finish = function (previewNote) {
+    var finish = function (byEmail) {
       document.getElementById('form-card').hidden = true;
-      document.getElementById('preview-note').hidden = true;
       var done = document.getElementById('done');
+      if (byEmail) {
+        document.getElementById('done-title').textContent = 'Almost done — press Send in your email';
+        document.getElementById('done-text').textContent = 'Your email app should have opened with your answers, addressed to ' + TO + '. Press Send there and we\'ll be in touch. If you\'d like to pick a time now, you can also book a 30-minute call.';
+        document.getElementById('done-email').hidden = false;
+      }
       done.hidden = false;
-      document.getElementById('done-preview').textContent = previewNote || '';
       done.focus(); window.scrollTo({ top: 0, behavior: 'smooth' });
     };
     // Bots fill the hidden field or submit instantly: show the thank-you and send nothing.
-    if (payload.website || payload.secondsToFill < 3) { finish(''); return; }
-    if (!SUBMIT_URL) { finish('Preview only — nothing was sent. Once connected, these answers go to the firm\'s Sheet and inbox.'); console.log('Would send:', payload); return; }
+    if (payload.website || payload.secondsToFill < 3) { finish(false); return; }
+    if (!SUBMIT_URL) {
+      var url = mailtoFor(payload);
+      document.getElementById('reopen-email').onclick = function (ev) { ev.preventDefault(); openMail(url); };
+      openMail(url);
+      finish(true);
+      return;
+    }
     var btn = form.querySelector('button[type=submit]');
     btn.disabled = true; btn.textContent = 'Sending…';
     // text/plain avoids a CORS preflight, which Apps Script web apps don't answer.
     fetch(SUBMIT_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action: 'prospect', data: payload }) })
       .then(function (r) { return r.json(); })
-      .then(function (r) { if (!r || !r.ok) throw new Error((r && r.error) || 'Not saved'); finish(''); })
+      .then(function (r) { if (!r || !r.ok) throw new Error((r && r.error) || 'Not saved'); finish(false); })
       .catch(function () {
         btn.disabled = false; btn.textContent = 'Send to Fluent Financials';
         alert('Sorry — that didn\'t go through. Please try again, or email info@fluentcpa.com.');

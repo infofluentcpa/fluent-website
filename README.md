@@ -4,13 +4,12 @@ A replacement for the Google Sites site at www.fluentcpa.com. Plain HTML and CSS
 no site builder, no plugins, nothing to update or patch. Same colours, fonts and logo
 mark as the client portal (portal.fluentcpa.com), so the two feel like one firm.
 
-**Status (2026-10-11): draft on this computer only. Nothing is published, and
-www.fluentcpa.com still shows the Google Sites site.**
+**Status (2026-10-11): published from github.com/infofluentcpa/fluent-website (GitHub Pages, free). The `CNAME` file connects it to www.fluentcpa.com; the switch completes when the www DNS record points at infofluentcpa.github.io (Squarespace). The bare fluentcpa.com already forwards to www.**
 
 | File | What it is |
 |---|---|
 | `index.html` | The whole site on one page: services, who we work with, how it works, planning, about, reviews, contact and hours |
-| `start.html` | "Become a client": a 2-minute questionnaire for people who aren't clients yet. **Preview only.** `SUBMIT_URL` is empty, so nothing is sent |
+| `start.html` | "Become a client": a 2-minute questionnaire for people who are not clients yet. Until `SUBMIT_URL` is set it sends by email: the visitor's email app opens a filled-in message to info@fluentcpa.com |
 | `assets/site.css` | All styles, shared by both pages |
 | `assets/` | Logo mark, tab icons, the headshot. All taken from the current Google Sites site |
 | `assets/fluent-financials.vcf` | The contact card ("Save to my contacts"): name, firm, phone, email, website, LinkedIn and the logo |
