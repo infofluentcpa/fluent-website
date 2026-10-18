@@ -237,3 +237,21 @@ textarea{min-height:110px;resize:vertical;}
 .niche{max-width:720px;margin:14px auto 0;background:var(--teal-wash);border:1px solid #CFE3E5;border-radius:12px;padding:12px 16px;font-size:15.5px;color:var(--slate);}
 .niche b{color:var(--teal-deep);}
 .chip-hi{border-color:var(--teal);color:var(--teal-deep);background:var(--teal-wash);font-weight:600;}
+
+/* Fold-outs (2026-10-18): every word kept, shown on a tap. Search engines still read the text inside. */
+details.more{margin-top:6px;}
+details.more > summary,details.faq-item > summary{cursor:pointer;list-style:none;font-weight:600;color:var(--teal,#15838E);display:flex;align-items:center;gap:8px;user-select:none;}
+details.more > summary::-webkit-details-marker,details.faq-item > summary::-webkit-details-marker{display:none;}
+details.more > summary::after,details.faq-item > summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .2s ease;margin-top:-3px;}
+details[open].more > summary::after,details[open].faq-item > summary::after{transform:rotate(-135deg);margin-top:3px;}
+details.more[open] > :not(summary){animation:fold .22s ease;}
+details.more > summary:hover,details.faq-item > summary:hover{text-decoration:underline;}
+details.more-dark > summary{color:#9FD9DE;}
+.faq{max-width:780px;display:grid;gap:10px;}
+details.faq-item{background:#fff;border:1px solid #E3E9E9;border-radius:12px;padding:16px 18px;}
+details.faq-item > summary{color:#1B2021;justify-content:space-between;font-size:16.5px;}
+details.faq-item > summary::after{color:#15838E;flex-shrink:0;}
+details.faq-item p{margin:10px 0 0;color:#545A5C;line-height:1.6;}
+details.faq-item[open] p{animation:fold .22s ease;}
+@keyframes fold{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce){details.more[open] > :not(summary),details.faq-item[open] p{animation:none;}details.more > summary::after,details.faq-item > summary::after{transition:none;}}

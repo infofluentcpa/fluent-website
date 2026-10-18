@@ -2,3 +2,5 @@ User-agent: *
 Disallow: /admin/
 Disallow: /card/
 Disallow: /tools/
+
+Sitemap: https://www.fluentcpa.com/sitemap.xml
