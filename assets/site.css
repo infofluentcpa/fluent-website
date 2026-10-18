@@ -256,3 +256,22 @@ details.faq-item[open] p{animation:fold .22s ease;}
 @keyframes fold{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){details.more[open] > :not(summary),details.faq-item[open] p{animation:none;}details.more > summary::after,details.faq-item > summary::after{transition:none;}}
 .where{margin:8px 0 0;color:#545A5C;font-size:15px;}
+
+/* Quiet motion and the help row (2026-10-18). Only for visitors whose device does not ask for reduced motion. */
+.help-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:18px;}
+.help-label{font-size:13px;font-weight:600;color:#545A5C;margin-right:4px;}
+.help-row a{font-size:14px;font-weight:600;color:var(--teal-deep);text-decoration:none;padding:7px 14px;border:1px solid #BFD7D9;border-radius:999px;background:#fff;transition:background .2s ease,border-color .2s ease,transform .2s ease;}
+.help-row a:hover,.help-row a:focus-visible{background:var(--teal-mist);border-color:var(--teal);transform:translateY(-1px);}
+.motion .reveal{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.2,.65,.3,1),transform .7s cubic-bezier(.2,.65,.3,1);}
+.motion .reveal.in{opacity:1;transform:none;}
+.card.pillar{position:relative;transition:transform .25s ease,box-shadow .25s ease;}
+.card.pillar::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--teal);border-radius:3px 3px 0 0;transition:width .35s ease;}
+.card.pillar:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(14,101,112,.12);}
+.card.pillar:hover::before,.card.pillar.flash::before{width:100%;}
+.card.pillar.flash{box-shadow:0 0 0 2px rgba(21,131,142,.35),0 14px 34px rgba(14,101,112,.12);}
+.hero-card .checks li{opacity:0;transform:translateX(-6px);animation:tickIn .5s ease forwards;}
+.hero-card .checks li:nth-child(1){animation-delay:.35s}.hero-card .checks li:nth-child(2){animation-delay:.5s}
+.hero-card .checks li:nth-child(3){animation-delay:.65s}.hero-card .checks li:nth-child(4){animation-delay:.8s}
+@keyframes tickIn{to{opacity:1;transform:none;}}
+@media (prefers-reduced-motion: reduce){.motion .reveal{opacity:1;transform:none;transition:none;}.hero-card .checks li{opacity:1;transform:none;animation:none;}
+  .card.pillar,.card.pillar::before,.help-row a{transition:none;}.card.pillar:hover{transform:none;}}
