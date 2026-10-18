@@ -255,3 +255,4 @@ details.faq-item p{margin:10px 0 0;color:#545A5C;line-height:1.6;}
 details.faq-item[open] p{animation:fold .22s ease;}
 @keyframes fold{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){details.more[open] > :not(summary),details.faq-item[open] p{animation:none;}details.more > summary::after,details.faq-item > summary::after{transition:none;}}
+.where{margin:8px 0 0;color:#545A5C;font-size:15px;}
