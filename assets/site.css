@@ -275,3 +275,17 @@ details.faq-item[open] p{animation:fold .22s ease;}
 @keyframes tickIn{to{opacity:1;transform:none;}}
 @media (prefers-reduced-motion: reduce){.motion .reveal{opacity:1;transform:none;transition:none;}.hero-card .checks li{opacity:1;transform:none;animation:none;}
   .card.pillar,.card.pillar::before,.help-row a{transition:none;}.card.pillar:hover{transform:none;}}
+
+/* The logo as a large, faint watermark (owner, 2026-10-18): the top card, behind Services, in the dark planning
+   panels and behind Contact. Decorative only: never in front of text, never clickable. */
+.hero-card{overflow:hidden;}
+.hero-card .mark-bg{right:-60px;top:-60px;width:300px;opacity:.09;}
+#services,#contact{position:relative;overflow:hidden;}
+#services::before,#contact::before{content:"";position:absolute;pointer-events:none;background:url(mark-512.png) no-repeat center/contain;opacity:.045;z-index:0;}
+#services::before{width:620px;height:615px;left:-170px;bottom:-150px;}
+#contact::before{width:520px;height:516px;right:-140px;top:-90px;}
+#services > .wrap,#contact > .wrap{position:relative;z-index:1;}
+.band{position:relative;overflow:hidden;}
+.band::after{content:"";position:absolute;pointer-events:none;width:300px;height:298px;right:-70px;bottom:-80px;background:url(mark-512.png) no-repeat center/contain;filter:brightness(0) invert(1);opacity:.07;}
+.band > *{position:relative;z-index:1;}
+@media (max-width:720px){#services::before{width:420px;height:417px;left:-160px;bottom:-120px;}#contact::before{width:360px;height:357px;right:-150px;top:-60px;}.hero-card .mark-bg{width:240px;}}
