@@ -1,7 +1,7 @@
 // Brand images for the Google Business Profile (2026-10-18): a 16:9 cover (2400 x 1350) and a square (1200 x 1200).
 // usage: node tools/brand-image.js "<output folder>"     (needs @napi-rs/canvas; uses the fluent-practice copy)
 const fs = require('fs'), path = require('path');
-const { createCanvas, loadImage, GlobalFonts } = require('C:/Users/aviva/Documents/fluent-practice/node_modules/@napi-rs/canvas');
+const { createCanvas, loadImage, GlobalFonts } = require('C:/Users/aviva/Documents/Fluent Financials/Practice/fluent-practice/node_modules/@napi-rs/canvas');
 const OUT = process.argv[2] || path.join(__dirname, '..', 'brand-out');
 fs.mkdirSync(OUT, { recursive: true });
 const F = 'C:/Windows/Fonts/';
