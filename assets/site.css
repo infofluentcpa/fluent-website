@@ -47,7 +47,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
 .nav .btn{margin-left:8px;color:#fff;}
 .menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:10px;width:44px;height:44px;cursor:pointer;}
 .menu-btn span{display:block;width:18px;height:2px;background:var(--ink);margin:4px auto;border-radius:2px;}
-@media (max-width:860px){
+@media (max-width:1000px){
   .menu-btn{display:block;}
   .nav{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--paper);border-bottom:1px solid var(--line);padding:10px 16px 18px;box-shadow:0 12px 24px rgba(0,0,0,.06);}
   .nav.open{display:flex;}
@@ -291,3 +291,11 @@ details.faq-item[open] p{animation:fold .22s ease;}
 .band::after{content:"";position:absolute;pointer-events:none;width:300px;height:298px;right:-70px;bottom:-80px;background:url(mark-512.png) no-repeat center/contain;filter:brightness(0) invert(1);opacity:.07;}
 .band > *{position:relative;z-index:1;}
 @media (max-width:720px){#services::before{width:420px;height:417px;left:-160px;bottom:-120px;}#contact::before{width:360px;height:357px;right:-150px;top:-60px;}.hero-card .mark-bg{width:240px;}}
+
+/* A link from a homepage card to its own page (2026-11-26). */
+.more-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-weight:600;font-size:15px;color:var(--teal-deep);text-decoration:none;}
+.more-link::after{content:"\2192";transition:transform .2s ease;}
+.more-link:hover::after{transform:translateX(3px);}
+.more-link-dark{color:#fff;margin-top:18px;}
+.nav a[aria-current="page"]{color:var(--teal-deep);background:var(--teal-mist);}
+.nav a{white-space:nowrap;}
